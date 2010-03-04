@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="scala.application">
+<stringAttribute key="bad_container_name" value="/ShapesAlgebraScalaProject/test."/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/ShapesAlgebraScalaProject/lib/scalatest-1.0.jar"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.scalatest.tools.Runner"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-s edu.luc.cs.laufer.cs473.shapealgebra.TestShapesValidity -s edu.luc.cs.laufer.cs473.shapealgebra.TestShapeSize -s edu.luc.cs.laufer.cs473.shapealgebra.TestBoundingBox -s edu.luc.cs.laufer.cs473.shapealgebra.TestDraw"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ShapesAlgebraScalaProject"/>
+</launchConfiguration>
