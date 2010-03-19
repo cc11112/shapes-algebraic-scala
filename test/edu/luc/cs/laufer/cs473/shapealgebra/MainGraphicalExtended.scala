@@ -18,7 +18,7 @@ object MainGraphicalExtended {
 	val padding = 20
 	val p = new JPanel {
 	  override def paintComponent(g: Graphics) {
-		g.translate(-x + padding, -y + padding);
+		g.translate(-x + padding, -y + padding)
 		ExtendedDraw(g)(s)
 		ExtendedDraw(g)(b)
 	  }
