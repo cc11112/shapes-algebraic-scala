@@ -1,5 +1,7 @@
 package edu.luc.cs.laufer.cs473.shapealgebra
 
+import java.awt.Graphics
+
 object TestFixtures {
 
   val simpleCircle = Circle(50)
@@ -28,4 +30,14 @@ object TestFixtures {
       Rectangle(100, 200)
     )
   )
+
+  def paintComplexGroup(g: Graphics) = {
+	g.translate(50, 100)
+	g.drawArc(-20, -20, 40, 40, 0, 360)
+	g.drawRect(0, 0, 100, 200)
+	g.drawRect(150, 50, 50, 30)
+	g.drawRect(150, 50, 300, 60)
+	g.translate(250, 250)
+	g.drawArc(-50, -50, 100, 100, 0, 360)
+  }
 }

@@ -3,7 +3,7 @@ package edu.luc.cs.laufer.cs473.shapealgebra
 import java.awt.{Color,Dimension,Graphics}
 import javax.swing.{JFrame,JPanel}
 
-import TestFixturesExtended.extendedGroup
+import TestFixturesExtended.{extendedGroup,paintExtendedGroup}
 
 object MainGraphicalExtended {
   def main(args : Array[String]) : Unit = {
@@ -17,7 +17,7 @@ object MainGraphicalExtended {
 	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 	val padding = 20
 	val p = new JPanel {
-	  override def paintComponent(g: Graphics) {
+	  override def paintComponent(g: Graphics) = {
 		g.translate(-x + padding, -y + padding)
 		ExtendedDraw(g)(s)
 		ExtendedDraw(g)(b)
@@ -34,18 +34,10 @@ object MainGraphicalExtended {
     g.setLocation(w + 2 * padding, 0)
 	g.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 	val q = new JPanel {
-	  override def paintComponent(g: Graphics) {
-		g.translate(-10, -60)
-		g.translate(50, 100)
-		g.drawArc(-20, -20, 40, 40, 0, 360)
-		g.drawRect(0, 0, 100, 200)
-		g.setColor(Color.RED)
-		g.fillRect(150, 50, 50, 30)
-		g.drawRect(150, 50, 300, 60)
-		g.setColor(Color.ORANGE)
-		g.translate(250, 250)
-		g.fillArc(-50, -50, 100, 100, 0, 360)
-	  }
+	  override def paintComponent(g: Graphics) = {
+    	g.translate(-10, -60)
+    	paintExtendedGroup(g)
+      }
 	}
 	q.setPreferredSize(new Dimension(470 + 2 * padding, 320 + 2 * padding))
 	g.setContentPane(q)
