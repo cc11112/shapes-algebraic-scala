@@ -16,11 +16,7 @@ class BoundingBox extends ShapeAlgebra[Location] {
     Location(l.x + b.x, l.y + b.y, b.shape)
   }
   override def visitGroup(rs: Seq[Location], g: Group) = {
-    val xl = rs.map(_.x).reduceLeft(Math.min)
-    val xr = rs.map((b: Location) => b.x + b.shape.asInstanceOf[Rectangle].width).reduceLeft(Math.max)
-    val yd = rs.map(_.y).reduceLeft(Math.min)
-    val yu = rs.map((b: Location) => b.y + b.shape.asInstanceOf[Rectangle].height).reduceLeft(Math.max)
-    Location(xl, yd, Rectangle(xr - xl, yu - yd))
+	throw new UnsupportedOperationException("nyi")
   }
 }
 
