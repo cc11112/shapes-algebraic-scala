@@ -84,16 +84,16 @@ class ExtendedBoundingBox extends BoundingBox with ExtendedShapeAlgebra[Location
     
 
     val x: Int = List(
-      calculateX(r.x, r.y, r.x, r.y, math.toRadians(t.r)),
-      calculateX(r.x, r.y, r.x, r.y + r.shape.asInstanceOf[Rectangle].height, math.toRadians(t.r)),
-      calculateX(r.x, r.y, r.x + r.shape.asInstanceOf[Rectangle].width, r.y, math.toRadians(t.r)),
-      calculateX(r.x, r.y, r.x + r.shape.asInstanceOf[Rectangle].width, r.y + r.shape.asInstanceOf[Rectangle].height, math.toRadians(t.r))).min
+      calculateX(0, 0, r.x, r.y, math.toRadians(t.r)),
+      calculateX(0, 0, r.x, r.y + r.shape.asInstanceOf[Rectangle].height, math.toRadians(t.r)),
+      calculateX(0, 0, r.x + r.shape.asInstanceOf[Rectangle].width, r.y, math.toRadians(t.r)),
+      calculateX(0, 0, r.x + r.shape.asInstanceOf[Rectangle].width, r.y + r.shape.asInstanceOf[Rectangle].height, math.toRadians(t.r))).min
 
     val y: Int = List(
-      calculateY(r.x, r.y, r.x, r.y, math.toRadians(t.r)),
-      calculateY(r.x, r.y, r.x, r.y + r.shape.asInstanceOf[Rectangle].height, math.toRadians(t.r)),
-      calculateY(r.x, r.y, r.x + r.shape.asInstanceOf[Rectangle].width, r.y, math.toRadians(t.r)),
-      calculateY(r.x, r.y, r.x + r.shape.asInstanceOf[Rectangle].width, r.y + r.shape.asInstanceOf[Rectangle].height, math.toRadians(t.r))).min
+      calculateY(0, 0, r.x, r.y, math.toRadians(t.r)),
+      calculateY(0, 0, r.x, r.y + r.shape.asInstanceOf[Rectangle].height, math.toRadians(t.r)),
+      calculateY(0, 0, r.x + r.shape.asInstanceOf[Rectangle].width, r.y, math.toRadians(t.r)),
+      calculateY(0, 0, r.x + r.shape.asInstanceOf[Rectangle].width, r.y + r.shape.asInstanceOf[Rectangle].height, math.toRadians(t.r))).min
 
     val w: Double = (math.abs(r.shape.asInstanceOf[Rectangle].width * math.cos(math.toRadians(t.r)))
       + math.abs(r.shape.asInstanceOf[Rectangle].height * math.sin(math.toRadians(t.r))))
