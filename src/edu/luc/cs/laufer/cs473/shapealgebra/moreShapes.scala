@@ -34,6 +34,6 @@ case class Outline(shape: Shape) extends Shape {
   require(shape != null)
 }
 
-case class Rotate(r: Int, shape: Shape) extends Shape {
+case class Rotate(r: Double, shape: Shape) extends Shape {
   require(shape != null)
 }

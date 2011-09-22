@@ -9,15 +9,14 @@ import TestFixturesExtended._
 @RunWith(classOf[JUnitRunner])
 class TestExtendedBoundingBox extends FunSuite {
 
-/*  
   def test(description: String, s: Shape, x: Int, y: Int, width: Int, height: Int): Unit = {
     test(description) {
-	  val b = ExtendedBoundingBox(s)
-	  val r = b.shape.asInstanceOf[Rectangle]
-	  assert(x === b.x)
-	  assert(y === b.y)
-	  assert(width === r.width)
-	  assert(height === r.height)
+      val b = ExtendedBoundingBox(s)
+      val r = b.shape.asInstanceOf[Rectangle]
+      assert(x === b.x)
+      assert(y === b.y)
+      assert(width === r.width)
+      assert(height === r.height)
     }
   }
 
@@ -31,5 +30,5 @@ class TestExtendedBoundingBox extends FunSuite {
   test("simple extended 3", simpleExtended3, -86, -23, 373, 446)
   test("extended group", extendedGroup, 30, 80, 470, 320)
   test("extended group rotate", extendedGroupRotate, -219, 73, 512, 567)
-*/  
+
 }
