@@ -20,7 +20,7 @@ class Composite(shapes: Shape*) extends Shape {
   }
 }
 
-case class Circle(radius: Int) extends Shape
+case class Ellipse(halfWidth: Int, halfHeight: Int) extends Shape
 case class Rectangle(width: Int, height: Int) extends Shape
 case class Location(x: Int, y: Int, shape: Shape) extends Decorator(shape)
 case class Group(shapes: Shape*) extends Composite(shapes: _*)

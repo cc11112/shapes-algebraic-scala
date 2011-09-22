@@ -5,7 +5,7 @@ package edu.luc.cs.laufer.cs473.shapealgebra
  */
 trait ShapeAlgebra[R] {
 
-  def visitCircle(c: Circle): R
+  def visitEllipse(e: Ellipse): R
   def visitRectangle(r: Rectangle): R
   def visitLocation(r: R, l: Location): R
   def visitGroup(rs: Seq[R], g: Group): R
@@ -14,7 +14,7 @@ trait ShapeAlgebra[R] {
    * The catamorphism for shapes.
    */
   def fold(s: Shape): R = s match {
-    case c: Circle => visitCircle(c)
+    case e: Ellipse => visitEllipse(e)
     case r: Rectangle => visitRectangle(r)
     case l: Location => visitLocation(fold(l.shape), l)
     case g: Group => visitGroup(g.shapes.map(fold(_)), g)
