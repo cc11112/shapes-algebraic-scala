@@ -16,7 +16,7 @@ class TestShapesValidity extends FunSuite {
 
   test("group with null child") {
 	intercept[IllegalArgumentException] {
-	  Group(Circle(50), null, Rectangle(30, 40))
+	  Group(Ellipse(50, 50), null, Rectangle(30, 40))
 	  fail("should have thrown IllegalArgumentException")
 	}
   }
