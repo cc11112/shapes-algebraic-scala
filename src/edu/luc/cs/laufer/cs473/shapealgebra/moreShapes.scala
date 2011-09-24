@@ -6,4 +6,4 @@ import java.awt.Color
  * Some additional shape classes added later.
  */
 
-// TODO: your job
+// TODO: your job (avoid inheritance among case classes)

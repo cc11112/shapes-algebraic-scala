@@ -1,9 +1,12 @@
 package edu.luc.cs.laufer.cs473.shapealgebra
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.FunSuite
 
 import TestFixtures._
 
+@RunWith(classOf[JUnitRunner])
 class TestBoundingBox extends FunSuite {
 
   def test(description: String, s: Shape, x: Int, y: Int, width: Int, height: Int): Unit = {
@@ -17,7 +20,7 @@ class TestBoundingBox extends FunSuite {
     }
   }
 
-  test("simple circle", simpleCircle, -50, -50, 100, 100)
+  test("simple circle", simpleEllipse, -50, -50, 100, 100)
   test("simple rectangle", simpleRectangle, 0, 0, 80, 120)
   test("simple location", simpleLocation, 70, 30, 80, 120)
   test("simple group", simpleGroup, 150, 50, 350, 300)

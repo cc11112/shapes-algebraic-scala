@@ -1,7 +1,10 @@
 package edu.luc.cs.laufer.cs473.shapealgebra
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.FunSuite
 
+@RunWith(classOf[JUnitRunner])
 class TestShapesValidity extends FunSuite {
 
   test("location with null child") {

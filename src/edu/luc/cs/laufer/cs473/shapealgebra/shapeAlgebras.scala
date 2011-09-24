@@ -16,6 +16,7 @@ class BoundingBox extends ShapeAlgebra[Location] {
     Location(l.x + b.x, l.y + b.y, b.shape)
   }
   override def visitGroup(rs: Seq[Location], g: Group) = {
+	// TODO: implement based on algorithm from previous subproject
 	throw new UnsupportedOperationException("nyi")
   }
 }

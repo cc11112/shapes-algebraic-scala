@@ -17,6 +17,7 @@ class ExtendedBoundingBox extends BoundingBox with ExtendedShapeAlgebra[Location
   // methods for original shapes inherited at class level
   // TODO: methods for the other additional (extended) shapes
   override def visitStroke(r: Location, s: Stroke) = r
+  // TODO: reduce Circle to Ellipse (avoid code duplication)
   // etc.
 }
 

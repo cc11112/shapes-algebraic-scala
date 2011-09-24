@@ -6,12 +6,14 @@ class ExtendedDraw extends Draw {
 
   override def draw(g: Graphics2D)(s: Shape): Unit = s match {
     // TODO: cases for the additional shapes
-    case _ => super.draw(g)(s)
+	// TODO: reduce Circle to Ellipse (avoid code duplication)
+  	case _ => super.draw(g)(s)
   }
 
   def fill(g: Graphics2D)(s: Shape): Unit = s match {
     case Ellipse(hw, hh) => g.fillArc(-hw, -hh, 2 * hw, 2 * hh, 0, 360)
     case Rectangle(w, h) => g.fillRect(0, 0, w, h)
+    // TODO: reduce Circle to Ellipse (avoid code duplication)
     case _ => draw(g)(s)
   }
 }

@@ -1,47 +1,50 @@
 package edu.luc.cs.laufer.cs473.shapealgebra
 
-import java.awt.{Color,Dimension,Graphics}
-import javax.swing.{JFrame,JPanel}
+import scala.swing._
+import java.awt.{Point => AWTPoint,Color,Dimension,Graphics2D}
 
-import TestFixturesExtended.{extendedGroup,paintExtendedGroup}
+import TestFixturesExtended._
 
 object MainGraphicalExtended {
-  def main(args : Array[String]) : Unit = {
-    val s = extendedGroup
-    val b @ Location(x, y, Rectangle(w, h)) = ExtendedBoundingBox(s)
-    println("shape = " + s)
-    println("bounding box = " + b)
-	val f = new JFrame
-	f.setTitle("drawn by Draw function")
-    f.setLocation(0, 0)
-	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
-	val padding = 20
-	val p = new JPanel {
-	  override def paintComponent(g: Graphics) = {
+  def main(args : Array[String]) { }
+
+  val s = extendedGroupRotate
+//  val s = Rotate(190, Location(100, 100, Ellipse(200, 100)))
+  val b @ Location(x, y, Rectangle(w, h)) = ExtendedBoundingBox(s)
+  println("shape = " + s)
+  println("bounding box = " + b)
+  val padding = 20
+
+  val f = new MainFrame {
+    override def closeOperation() { System.exit(0) }
+    title = "drawn by ExtendedDraw function"
+    location = new AWTPoint(0, 0)
+    contents = new Panel {
+      preferredSize = new Dimension(w + 2 * padding, h + 2 * padding)
+	  override def paint(g: Graphics2D) = {
 		g.translate(-x + padding, -y + padding)
 		ExtendedDraw(g)(s)
 		ExtendedDraw(g)(b)
 	  }
-	}
-	p.setPreferredSize(new Dimension(w + 2 * padding, h + 2 * padding))
-	f.setContentPane(p)
-	f.pack()
-	f.setVisible(true)
-	// now draw the same complex group of shapes by hand
-	// (without the bounding box)
-	val g = new JFrame
-	g.setTitle("drawn manually")
-    g.setLocation(w + 2 * padding, 0)
-	g.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
-	val q = new JPanel {
-	  override def paintComponent(g: Graphics) = {
-    	g.translate(-10, -60)
-    	paintExtendedGroup(g)
-      }
-	}
-	q.setPreferredSize(new Dimension(470 + 2 * padding, 320 + 2 * padding))
-	g.setContentPane(q)
-	g.pack()
-	g.setVisible(true)
+    }
+	pack()
+	visible = true
+  }
+
+  // now draw the same complex group of shapes by hand
+  // (without the bounding box)
+  val top2 = new MainFrame {
+    override def closeOperation() { System.exit(0) }
+    title = "drawn directly"
+    location = new AWTPoint(w + 2 * padding, 0)
+    contents = new Panel {
+      preferredSize = new Dimension(512 + 2 * padding, 567 + 2 * padding)
+	  override def paint(g: Graphics2D) = {
+    	g.translate(239, -53)
+   		paintExtendedGroupRotate(g)
+	  }
+    }
+	pack()
+	visible = true
   }
 }

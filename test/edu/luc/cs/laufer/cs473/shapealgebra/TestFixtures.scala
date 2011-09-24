@@ -4,26 +4,26 @@ import java.awt.Graphics
 
 object TestFixtures {
 
-  val simpleCircle = Circle(50)
+  val simpleEllipse = Ellipse(50, 50)
 
   val simpleRectangle = Rectangle(80, 120)
 
   val simpleLocation = Location(70, 30, Rectangle(80, 120))
 
   val simpleGroup = Group(
-    Location(200, 100, Circle(50)),
+    Location(200, 100, Ellipse(50, 50)),
 	Location(400, 300, Rectangle(100, 50))
   )
 
   val complexGroup = Location(50, 100,
     Group(
-	  Circle(20),
+	  Ellipse(20, 20),
 	  Location(150, 50,
         Group(
 	      Rectangle(50, 30),
 	      Rectangle(300, 60),
 	      Location(100, 200,
-	        Circle(50)
+	        Ellipse(50, 50)
 	      )
 	    )
 	  ),
