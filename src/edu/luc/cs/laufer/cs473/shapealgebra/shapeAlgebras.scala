@@ -4,7 +4,7 @@ object ShapeSize extends ShapeAlgebra[Int] {
   override def visitEllipse(e: Ellipse) = 1
   override def visitRectangle(r: Rectangle) = 1
   override def visitLocation(r: Int, l: Location) = r
-  override def visitGroup(rs: Seq[Int], g: Group) = rs.reduceLeft(_+_)
+  override def visitGroup(rs: Seq[Int], g: Group) = rs.sum
 }
 
 class BoundingBox extends ShapeAlgebra[Location] {
