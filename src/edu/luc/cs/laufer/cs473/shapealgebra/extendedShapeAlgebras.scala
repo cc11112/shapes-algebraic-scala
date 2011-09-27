@@ -1,5 +1,7 @@
 package edu.luc.cs.laufer.cs473.shapealgebra
 
+ /* 
+ 
 object ExtendedShapeSize extends ExtendedShapeAlgebra[Int] {
   // forward methods for original shapes at object level
   override def visitEllipse(e: Ellipse) = ShapeSize.visitEllipse(e)
@@ -22,3 +24,5 @@ class ExtendedBoundingBox extends BoundingBox with ExtendedShapeAlgebra[Location
 }
 
 object ExtendedBoundingBox extends ExtendedBoundingBox
+
+*/

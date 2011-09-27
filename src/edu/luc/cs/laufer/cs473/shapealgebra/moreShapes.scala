@@ -7,3 +7,33 @@ import java.awt.Color
  */
 
 // TODO: your job (avoid inheritance among case classes)
+
+case class Point(x: Int, y: Int) extends Shape
+
+case class Circle(radius: Int) extends Shape {
+  require(radius > 0)
+}
+
+case class Polygon(points: Point*) extends Shape {
+  require(points != null)
+  require(points.length > 0)
+  for (point <- points)
+    require(point != null)
+}
+
+case class Stroke(color: Color, shape: Shape) extends Shape {
+  require(color != null)
+  require(shape != null)
+}
+
+case class Fill(shape: Shape) extends Shape {
+  require(shape != null)
+}
+
+case class Outline(shape: Shape) extends Shape {
+  require(shape != null)
+}
+
+case class Rotate(r: Int, shape: Shape) extends Shape {
+  require(shape != null)
+}

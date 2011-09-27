@@ -7,7 +7,11 @@ trait ExtendedShapeAlgebra[R] extends ShapeAlgebra[R] {
 
   def visitPolygon(p: Polygon): R
   // TODO: add missing visit methods similarly to Location
-
+  
+  def visitStroke(r: R, s: Stroke): R = r match {
+    case _ => sys.error("need do more thing here")
+  }
+   
   /**
    * The extended catamorphism for shapes.
    */

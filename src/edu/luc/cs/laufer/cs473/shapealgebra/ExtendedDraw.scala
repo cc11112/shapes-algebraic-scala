@@ -14,6 +14,7 @@ class ExtendedDraw extends Draw {
     case Ellipse(hw, hh) => g.fillArc(-hw, -hh, 2 * hw, 2 * hh, 0, 360)
     case Rectangle(w, h) => g.fillRect(0, 0, w, h)
     // TODO: reduce Circle to Ellipse (avoid code duplication)
+    case Circle(radius) => Ellipse(radius, radius)
     case _ => draw(g)(s)
   }
 }

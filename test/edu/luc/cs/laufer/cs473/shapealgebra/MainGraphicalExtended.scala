@@ -1,10 +1,13 @@
 package edu.luc.cs.laufer.cs473.shapealgebra
 
 import scala.swing._
+
 import java.awt.{Point => AWTPoint,Color,Dimension,Graphics2D}
 
 import TestFixturesExtended._
 
+/*
+ 
 object MainGraphicalExtended {
   def main(args : Array[String]) { }
 
@@ -48,3 +51,4 @@ object MainGraphicalExtended {
 	visible = true
   }
 }
+*/
