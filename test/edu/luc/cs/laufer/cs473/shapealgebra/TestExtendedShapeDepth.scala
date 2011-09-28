@@ -10,7 +10,6 @@ import TestFixturesExtended._
 @RunWith(classOf[JUnitRunner])
 class TestExtendedShapeDepth extends FunSuite {
 
-/*  
   def test(description: String, s: Shape, d: Int): Unit = {
     test(description) {
 	  assert(d === ExtendedShapeDepth(s))
@@ -32,5 +31,5 @@ class TestExtendedShapeDepth extends FunSuite {
   test("simple extended 3", simpleExtended3, 3)
   test("extended group", extendedGroup, 9)
   test("extended group rotate", extendedGroupRotate, 11)
-*/  
+  
 }
