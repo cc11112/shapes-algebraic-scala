@@ -31,7 +31,6 @@ class BoundingBox extends ShapeAlgebra[Location] {
       new Rectangle(
         x.last - x.head,
         y.last - y.head))
-
   }
 }
 
