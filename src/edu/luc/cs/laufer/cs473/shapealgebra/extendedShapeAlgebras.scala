@@ -66,14 +66,21 @@ class ExtendedBoundingBox extends BoundingBox with ExtendedShapeAlgebra[Location
   override def visitRotate(r: Location, t: Rotate) = {
 
     //TODO: Calculate the third point, x, y
+    def calculateX(x: Double, y: Double, r: Double): Double =
+      x * math.cos(r) + y * math.sin(r)
 
-    val x: List[Double] = List(r.x,
-      -r.shape.asInstanceOf[Rectangle].height * math.sin(math.toRadians(t.r)),
-      r.shape.asInstanceOf[Rectangle].width * math.cos(math.toRadians(t.r)))
+    def calculateY(x: Double, y: Double, r: Double): Double =
+      -x * math.sin(r) + y * math.cos(r)
 
-    val y: List[Double] = List(r.y,
-      r.shape.asInstanceOf[Rectangle].width * math.sin(math.toRadians(t.r)),
-      r.shape.asInstanceOf[Rectangle].height * math.cos(math.toRadians(t.r)))
+    val x: Double = List(
+      calculateX(r.x, r.y + r.shape.asInstanceOf[Rectangle].height, math.toRadians(t.r)),
+      calculateX(r.x + r.shape.asInstanceOf[Rectangle].width, r.y, math.toRadians(t.r))).min
+
+    val y: Double = List(
+      calculateY(r.x, r.y, math.toRadians(t.r)),
+      calculateY(r.x + r.shape.asInstanceOf[Rectangle].width,
+        r.y + r.shape.asInstanceOf[Rectangle].height,
+        math.toRadians(t.r))).min
 
     val w: Double = (math.abs(r.shape.asInstanceOf[Rectangle].width * math.cos(math.toRadians(t.r)))
       + math.abs(r.shape.asInstanceOf[Rectangle].height * math.sin(math.toRadians(t.r))))
@@ -81,7 +88,7 @@ class ExtendedBoundingBox extends BoundingBox with ExtendedShapeAlgebra[Location
     val h: Double = (math.abs(r.shape.asInstanceOf[Rectangle].height * math.cos(math.toRadians(t.r)))
       + math.abs(r.shape.asInstanceOf[Rectangle].width * math.sin(math.toRadians(t.r))))
 
-    new Location(x.min.toInt, y.min.toInt,
+    new Location(x.toInt, y.toInt,
       new Rectangle(w.toInt, h.toInt))
   }
 
