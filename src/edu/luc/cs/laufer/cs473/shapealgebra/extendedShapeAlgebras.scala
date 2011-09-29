@@ -56,7 +56,7 @@ class ExtendedBoundingBox extends BoundingBox with ExtendedShapeAlgebra[Location
     val x: List[Int] = p.points.map(p => p.x).toList
     val y: List[Int] = p.points.map(p => p.y).toList
 
-    new Location(x.min, y.min, new Rectangle(x.max - x.max, y.last - y.min))
+    new Location(x.min, y.min, new Rectangle(x.max - x.min, y.max - y.min))
   }
 
   override def visitFill(r: Location, f: Fill) = visitLocation(r, new Location(0, 0, f.shape))
