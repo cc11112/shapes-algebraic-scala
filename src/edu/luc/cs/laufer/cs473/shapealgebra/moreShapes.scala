@@ -16,9 +16,8 @@ case class Circle(radius: Int) extends Shape {
 
 case class Polygon(points: Point*) extends Shape {
   require(points != null)
-  require(points.length > 0)
-  for (point <- points)
-    require(point != null)
+  require(points.size > 0)
+  require(!points.contains(null))
 }
 
 case class Stroke(color: Color, shape: Shape) extends Shape {

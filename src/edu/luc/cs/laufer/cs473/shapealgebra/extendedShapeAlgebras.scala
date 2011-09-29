@@ -19,7 +19,7 @@ object ExtendedShapeSize extends ExtendedShapeAlgebra[Int] {
   override def visitPolygon(p: Polygon) = 1
   override def visitFill(r: Int, f: Fill) = r
   override def visitOutline(r: Int, o: Outline) = r
-  override def visitRotate(r: Int, T: Rotate) = r
+  override def visitRotate(r: Int, s: Rotate) = r
 }
 
 object ExtendedShapeDepth extends ExtendedShapeAlgebra[Int] {
@@ -34,7 +34,7 @@ object ExtendedShapeDepth extends ExtendedShapeAlgebra[Int] {
   override def visitPolygon(p: Polygon) = 1
   override def visitFill(r: Int, f: Fill) = 1 + fold(f.shape)
   override def visitOutline(r: Int, o: Outline) = 1 + fold(o.shape)
-  override def visitRotate(r: Int, t: Rotate) = 1 + fold(t.shape)
+  override def visitRotate(r: Int, s: Rotate) = 1 + fold(s.shape)
 
 }
 
@@ -53,36 +53,23 @@ class ExtendedBoundingBox extends BoundingBox with ExtendedShapeAlgebra[Location
   override def visitCircle(c: Circle) = visitEllipse(new Ellipse(c.radius, c.radius))
   override def visitPolygon(p: Polygon) = {
 
-    val x: List[Int] = p.points.map(p => p.x).toList.sortWith(_ < _)
-    var y: List[Int] = p.points.map(p => p.y).toList.sortWith(_ < _)
+    val x: List[Int] = p.points.map(p => p.x).toList
+    val y: List[Int] = p.points.map(p => p.y).toList
 
-    new Location(
-      x.head,
-      y.head,
-      new Rectangle(x.last - x.head, y.last - y.head))
+    new Location(x.min, y.min, new Rectangle(x.max - x.max, y.last - y.min))
   }
 
   override def visitFill(r: Location, f: Fill) = visitLocation(r, new Location(0, 0, f.shape))
   override def visitOutline(r: Location, o: Outline) = visitLocation(r, new Location(0, 0, o.shape))
   override def visitRotate(r: Location, t: Rotate) = {
 
-    //TODO: Calculate the third point, x, y
-    //    def calculate(x0: Double, y0: Double, x: Double, y: Double, r: Double): (Int, Int) = {
-    //      val a: Double = x - x0;
-    //      val b: Double = y - y0;
-    //      val xx: Int = (+a * math.cos(r) - b * math.sin(r) + x0).toInt
-    //      val yy: Int = (+a * math.sin(r) + b * math.cos(r) + y0).toInt
-    //      (xx , yy)
-    //    }
-    //     
-
     def calculateX(x0: Double, y0: Double, x: Double, y: Double, r: Double): Int =
       ((x - x0) * math.cos(r) - (y - y0) * math.sin(r) + x0).toInt
 
     def calculateY(x0: Double, y0: Double, x: Double, y: Double, r: Double): Int =
       ((x - x0) * math.sin(r) + (y - y0) * math.cos(r) + y0).toInt
-    
 
+    //default is rotate by (0,0)
     val x: Int = List(
       calculateX(0, 0, r.x, r.y, math.toRadians(t.r)),
       calculateX(0, 0, r.x, r.y + r.shape.asInstanceOf[Rectangle].height, math.toRadians(t.r)),
