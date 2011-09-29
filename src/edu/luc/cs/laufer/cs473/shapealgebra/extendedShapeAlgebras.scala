@@ -1,5 +1,7 @@
 package edu.luc.cs.laufer.cs473.shapealgebra
 
+import scala.math
+
 object ExtendedShapeSize extends ExtendedShapeAlgebra[Int] {
   // forward methods for original shapes at object level
   override def visitEllipse(e: Ellipse) = ShapeSize.visitEllipse(e)
@@ -63,15 +65,25 @@ class ExtendedBoundingBox extends BoundingBox with ExtendedShapeAlgebra[Location
   override def visitOutline(r: Location, o: Outline) = visitLocation(r, new Location(0, 0, o.shape))
   override def visitRotate(r: Location, t: Rotate) = {
 
-    val x: Double = Math.abs(t.shape.asInstanceOf[Rectangle].width * Math.cos(t.r)) +
-      Math.abs(t.shape.asInstanceOf[Rectangle].height * Math.sin(t.r))
+    //TODO: Calculate the third point, x, y
 
-    var y: Double = Math.abs(t.shape.asInstanceOf[Rectangle].height * Math.cos(t.r)) +
-      Math.abs(t.shape.asInstanceOf[Rectangle].width * Math.sin(t.r))
+    val x: List[Double] = List(r.x,
+      -r.shape.asInstanceOf[Rectangle].height * math.sin(math.toRadians(t.r)),
+      r.shape.asInstanceOf[Rectangle].width * math.cos(math.toRadians(t.r)))
 
-    new Location(x.toInt, y.toInt, t.shape)
+    val y: List[Double] = List(r.y,
+      r.shape.asInstanceOf[Rectangle].width * math.sin(math.toRadians(t.r)),
+      r.shape.asInstanceOf[Rectangle].height * math.cos(math.toRadians(t.r)))
+
+    val w: Double = (math.abs(r.shape.asInstanceOf[Rectangle].width * math.cos(math.toRadians(t.r)))
+      + math.abs(r.shape.asInstanceOf[Rectangle].height * math.sin(math.toRadians(t.r))))
+
+    val h: Double = (math.abs(r.shape.asInstanceOf[Rectangle].height * math.cos(math.toRadians(t.r)))
+      + math.abs(r.shape.asInstanceOf[Rectangle].width * math.sin(math.toRadians(t.r))))
+
+    new Location(x.min.toInt, y.min.toInt,
+      new Rectangle(w.toInt, h.toInt))
   }
-    
 
 }
 
