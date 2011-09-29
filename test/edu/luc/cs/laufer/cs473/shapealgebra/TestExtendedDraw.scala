@@ -15,6 +15,7 @@ class TestExtendedDraw extends FunSuite with BufferedImageEquality {
 	val s = extendedGroup
 	val i = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB)
 	ExtendedDraw(i.createGraphics())(s)
+	
 	val j = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB)
 	paintExtendedGroup(j.createGraphics())
 	assertEquals(i, j)

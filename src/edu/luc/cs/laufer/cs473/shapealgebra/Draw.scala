@@ -8,11 +8,11 @@ class Draw {
     case Rectangle(w, h) => g.drawRect(0, 0, w, h)
     // TODO: Location and Group
     case Location(x: Int, y: Int, shape: Shape) =>
-      g.drawRect(x, y, shape.asInstanceOf[Rectangle].width, shape.asInstanceOf[Rectangle].height)
-    case Group(shapes: Seq[Shape]) => {
-      for (s <- shapes) {
+      g.translate(x, y)
+      draw(g)(shape)
+    case Group(shapes @ _*) => {
+      for (s <- shapes)
         draw(g)(s)
-      }
     }
   }
 }
