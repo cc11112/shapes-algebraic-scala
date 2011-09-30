@@ -14,8 +14,10 @@ class ExtendedDraw extends Draw {
       g.drawPolygon(points.map(s => s.x).toArray[Int], points.map(s => s.y).toArray[Int], points.size)
     }
     case Stroke(color: Color, shape: Shape) => {
+      val color = g.getColor();
       g.setColor(color)
       draw(g)(shape)
+      g.setColor(color)
     }
     case Fill(shape: Shape) => fill(g)(shape)
 
