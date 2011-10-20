@@ -14,25 +14,15 @@ case class Circle(radius: Int) extends Shape {
   require(radius > 0)
 }
 
-case class Polygon(points: Point*) extends Shape {
-  require(points != null)
-  require(points.size > 0)
-  require(!points.contains(null))
-}
+case class Polygon(points: Point*) extends Composite(points: _*)
 
-case class Stroke(color: Color, shape: Shape) extends Shape {
+case class Stroke(color: Color, shape: Shape) extends Decorator(shape) {
   require(color != null)
   require(shape != null)
 }
 
-case class Fill(shape: Shape) extends Shape {
-  require(shape != null)
-}
+case class Fill(shape: Shape) extends Decorator(shape) 
 
-case class Outline(shape: Shape) extends Shape {
-  require(shape != null)
-}
+case class Outline(shape: Shape) extends Decorator(shape) 
 
-case class Rotate(r: Double, shape: Shape) extends Shape {
-  require(shape != null)
-}
+case class Rotate(r: Double, shape: Shape) extends Decorator(shape) 
