@@ -20,4 +20,5 @@ class TestExtendedDraw extends FunSuite with BufferedImageEquality {
 	paintExtendedGroup(j.createGraphics())
 	assertEquals(i, j)
   }
+  
 }
